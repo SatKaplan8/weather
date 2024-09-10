@@ -15,7 +15,7 @@ import { Component2Component } from './component2/component2.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule // Include ReactiveFormsModule here
+    FormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

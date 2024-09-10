@@ -1,8 +1,9 @@
 <div class="card card-1">
   <img src="assets/image1.jpg" alt="Weather Image 1" class="card-image">
   <div class="card-content">
-    <input type="text" [(ngModel)]="location" class="search-bar" placeholder="Enter location">
-    <button (click)="fetchWeatherData()" class="search-button">Search</button>
+    <input type="text" (keyup)="onKeyUp($event)"  [(ngModel)]="location" class="search-bar" placeholder="Enter location">
+    <!-- <input  placeholder="Press Enter"> -->
+    <!-- <button (click)="fetchWeatherData()" class="search-button">Search</button>//Earlier i was using click  -->
     <div class="weather-info">
       <div id="day1">{{ day }}</div>
       <div id="date1">{{ date }}</div>

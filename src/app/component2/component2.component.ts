@@ -1,18 +1,24 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges,ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-component2',
   templateUrl: './component2.component.html',
   styleUrl: './component2.component.css'
 })
-export class Component2Component implements OnChanges{
-  @Input() location: string = '';
+export class Component2Component implements OnInit, OnChanges{
+  @Input() location: any;
   precipitation: string = '0 mm';
   humidity: string = '0%';
   wind: string = '0 km/h';
 
+ngOnInit() {
+  console.log("called");
+console.log(this.location);
+}
+
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['location']) {
+    if (changes['location'] && changes['location'].currentValue) {
+      console.log('Location changed to:', this.location);
       this.fetchWeatherDetails(this.location);
     }
   }
@@ -40,5 +46,6 @@ export class Component2Component implements OnChanges{
     this.precipitation = `${weather.precip_mm || 0} mm`;
     this.humidity = `${weather.humidity}%`;
     this.wind = `${weather.wind_kph} km/h`;
+   
   }
 }

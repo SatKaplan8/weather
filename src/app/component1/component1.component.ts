@@ -12,13 +12,20 @@ export class Component1Component {
   temperature: string = 'Temperature';
   weatherLogo: string = '';
 
+  @Output() searchEvent = new EventEmitter<string>();
+  
+  onKeyUp(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.fetchWeatherData();
+    }
+  }
   fetchWeatherData() {
     if (!this.location) {
       alert('Please enter a location');
       return;
     }
 
-    const apiKey = '62496bfac74d40628db103958240709'; 
+    const apiKey = '62496bfac74d40628db103958240709';
     const apiUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${this.location}`;
 
     fetch(apiUrl)
@@ -36,40 +43,38 @@ export class Component1Component {
   updateWeatherInfo(data: any) {
     const weather = data.current;
     const tempC = weather.temp_c;
-    const date = new Date(); // Create a new Date object
-    
-    // Define formatting options
-    const options: Intl.DateTimeFormatOptions = { 
-      weekday: 'long', 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
+    const date = new Date();
+
+    const options: Intl.DateTimeFormatOptions = {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
     };
-    
-    // Create a new Intl.DateTimeFormat instance with the desired locale and options
+
     const formatter = new Intl.DateTimeFormat('en-US', options);
-    
-    // Format the date
     const formattedDate = formatter.format(date);
-    
-    // Split formattedDate if necessary (e.g., for separate day and date)
+
     const [dayOfWeek, monthDayYear] = formattedDate.split(', ');
     this.day = dayOfWeek;
     this.date = monthDayYear;
 
     this.temperature = `${tempC}°C`;
     this.weatherLogo = this.getWeatherLogo(tempC);
+
+   
+    this.searchEvent.emit(this.location);
   }
 
   getWeatherLogo(tempC: number): string {
     if (tempC <= 0) {
-      return 'assets/snowflake.jpg'; 
+      return 'assets/snowflake.jpg';
     } else if (tempC <= 15) {
-      return 'assets/cloudy.png'; 
+      return 'assets/cloudy.png';
     } else if (tempC <= 25) {
-      return 'assets/weather1.png'; 
+      return 'assets/weather1.png';
     } else {
-      return 'assets/sunny.png'; 
+      return 'assets/sunny.png';
     }
   }
 }

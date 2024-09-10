@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'weather';
-  location: string = '';
+  location: string = 'japan';
 
   // This method will be used to update location or handle data from Card1Component
   updateLocation(newLocation: string) {
