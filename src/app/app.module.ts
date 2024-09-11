@@ -1,21 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { WeathercomponentComponent } from './weathercomponent/weathercomponent.component';
-import { Component1Component } from './component1/component1.component';
-import { Component2Component } from './component2/component2.component';
+import { DetailsComponent } from './details/details.component';
+import { InfoComponent } from './info/info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WeathercomponentComponent,
-    Component1Component,
-    Component2Component
+    DetailsComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule // Include ReactiveFormsModule here
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

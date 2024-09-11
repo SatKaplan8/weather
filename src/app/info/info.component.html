@@ -1,0 +1,11 @@
+<div class="card card-1">
+    <img src="assets/image1.jpg" alt="Weather Image 1" class="card-image">
+    <div class="card-content">
+        <input type="text" (keyup)="onKeyPress($event)" [(ngModel)]="location" class="search-bar"
+            placeholder="Enter location">
+        <div class="weather-info">
+            <img id="weather-logo" class="weather-logo" [src]="logo" alt="Weather Logo">
+            <div id="temperature1">{{ temperature }}</div>
+        </div>
+    </div>
+</div>

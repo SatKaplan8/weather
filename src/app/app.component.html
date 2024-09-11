@@ -1,4 +1,7 @@
 <div class="container">
-    <app-component1 (searchEvent)="$any($event)"></app-component1>
-    <app-component2 [location]="location"></app-component2>
+    <!-- <app-component1 (searchEvent)="$any($event)"></app-component1> -->
+    <!-- <app-component2 [precipitation]="precipitation"></app-component2> -->
+    <app-info [data]="data" (updateLocation)="handleLocationChange($event)" [logo]="logo"></app-info>
+    <app-details [data]="data"></app-details>
+
 </div>
