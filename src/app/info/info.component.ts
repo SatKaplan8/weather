@@ -29,8 +29,10 @@ export class InfoComponent {
 
   onKeyPress(event: any) {
     console.log("update location", event.target.value)
-    
+    if(event.key=='Enter'){
     const newLocation = event.target.value
+    
     this.updateLocation.emit(newLocation)
   }
+}
 }
